@@ -48,8 +48,19 @@ pipeline {
     }
 
     stage('end ') {
-      steps {
-        echo 'this is the end of the pipeline'
+      parallel {
+        stage('end ') {
+          steps {
+            echo 'this is the end of the pipeline'
+          }
+        }
+
+        stage('end1') {
+          steps {
+            echo 'end1 stage'
+          }
+        }
+
       }
     }
 
